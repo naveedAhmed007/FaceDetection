@@ -5726,6 +5726,11 @@ react-native-face-detection@^0.1.1:
   resolved "https://registry.yarnpkg.com/react-native-face-detection/-/react-native-face-detection-0.1.1.tgz#626b1804e0d5b718313fc0486d333167e4df3396"
   integrity sha512-OceKwx+0eqEJXRkv5RlULEo766bd2MGPf0MAIwytUdeIIqDuPwGxF8ZqOg4FgzvIvYylIp5S8oMspWOYVdcc9w==
 
+react-native-floating-bubble@^1.0.12:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/react-native-floating-bubble/-/react-native-floating-bubble-1.0.12.tgz#e1506056371dd064f6d433b2ad025125bbf7aef0"
+  integrity sha512-TnWV85dYCUFlzHNy+l7YucRQcIu9C4XMMUOkPkFUjomuFWilAo3rk0Mpc4p6MdhT5Ycjx0rBPjv5YYO/IAgRXQ==
+
 react-native-gradle-plugin@^0.71.17:
   version "0.71.17"
   resolved "https://registry.yarnpkg.com/react-native-gradle-plugin/-/react-native-gradle-plugin-0.71.17.tgz#cf780a27270f0a32dca8184eff91555d7627dd00"

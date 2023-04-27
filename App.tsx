@@ -1,6 +1,7 @@
-import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
+import { View, Text, ActivityIndicator, StyleSheet, DeviceEventEmitter, Alert } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import { Camera, useCameraDevices } from 'react-native-vision-camera';
+import { showFloatingBubble, hideFloatingBubble, requestPermission, initialize } from "react-native-floating-bubble"
 import FaceDetection, {
   FaceDetectorContourMode,
   FaceDetectorLandmarkMode,
@@ -11,6 +12,7 @@ const App = () => {
 
   //Hooks
   const [image, setImage] = useState<string | undefined>();
+  const [showCamera, setShowCamera] = useState<boolean>(false);
 
   //Camera Vars
   const devices = useCameraDevices('wide-angle-camera');
@@ -29,6 +31,7 @@ const App = () => {
         const faces = await FaceDetection.processImage(buffer.path, options1);
         if (faces.length > 0) {
           alert(`Total No of faces are ${faces.length}`);
+          // console.log("Total No of faces are ${faces.length}===============",`Total No of faces are ${faces.length}`)
         }
       } catch (error) {
         console.log('Error in handleInterval:', error);
@@ -52,7 +55,28 @@ const App = () => {
         console.log('Error in getPermissions:', error);
       }
     };
-    getPermissions();
+    requestPermission()
+	.then(() => console.log("Permission Granted"))
+	.catch(() => console.log("Permission is not granted"))
+	
+// Initialize bubble manage
+initialize()
+	.then(() => console.log("Initialized the bubble mange"))
+  showFloatingBubble(10, 10)
+	.then(() => {      
+  
+  });
+  
+  getPermissions();
+  DeviceEventEmitter.addListener("floating-bubble-press", (e) => {
+    setShowCamera(prevShowCamera => !prevShowCamera)
+    Alert.alert(
+      'Alert Title',
+      'alertMessage',
+  )
+  //  console.log("camera===============","I am pressed")
+  });
+
   }, []);
 
 
@@ -60,6 +84,7 @@ const App = () => {
 
   return (
     <>
+      {showCamera && 
       <Camera
         style={StyleSheet.absoluteFill}
         device={device}
@@ -67,6 +92,7 @@ const App = () => {
         isActive={true}
         photo={true}
       />
+      }
     </>
   )
 }
