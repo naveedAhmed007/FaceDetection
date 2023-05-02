@@ -70,10 +70,10 @@ initialize()
   getPermissions();
   DeviceEventEmitter.addListener("floating-bubble-press", (e) => {
     setShowCamera(prevShowCamera => !prevShowCamera)
-    Alert.alert(
-      'Alert Title',
-      'alertMessage',
-  )
+  //   Alert.alert(
+  //     'Alert Title',
+  //     'alertMessage',
+  // )
   //  console.log("camera===============","I am pressed")
   });
 
